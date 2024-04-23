@@ -1,0 +1,355 @@
+.playlist_w {
+  width: 100%;
+  height: 100%;
+  .playlist_header {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding-left: 50px;
+    gap: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    .btn:nth-child(2) {
+      transform: rotate(180deg);
+    }
+    .btn {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      border: 0;
+      outline: none;
+      cursor: pointer;
+      background-color: #000000af;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  .playlist_carts {
+    width: 90%;
+    height: 300px;
+    margin: 0 auto;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    // flex-wrap: wrap;
+    gap: 50px;
+    .play_left {
+      width: 300px;
+      height: 295px;
+      object-fit: cover;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+      @media (max-width: 760px) {
+        width: 250px;
+        height: 245px;
+      }
+      @media (max-width: 540px) {
+        width: 100%;
+        height: 150px;
+      }
+    }
+    .play_right {
+      p {
+        font-size: 17px;
+        color: rgb(0, 0, 0);
+        padding-top: 50px;
+      }
+      h2 {
+        font-size: 60px;
+        font-family: 600;
+        color: rgb(0, 0, 0);
+        padding-top: 10px;
+        padding-bottom: 20px;
+        line-height: 55px;
+      }
+      .p {
+        font-size: 20px;
+        padding-top: 10px;
+      }
+      @media (max-width: 540px) {
+        width: 100%;
+        p {
+          font-size: 15px;
+        }
+        h2 {
+          font-size: 30px;
+        }
+      }
+    }
+  }
+  @media (max-width: 500px) {
+    .playlist_carts {
+      width: 95%;
+      height: 200px;
+      gap: 10px;
+    }
+  }
+  .play_btns {
+    background-color: rgb(18, 18, 18);
+    height: 100px;
+    width: 100%;
+    padding: 40px 40px 40px 40px;
+    margin: 0 auto;
+    margin-top: 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .buttons {
+      display: flex;
+      align-items: center;
+      position: relative;
+      gap: 20px;
+    }
+  }
+}
+
+.play_btn {
+  width: 55px;
+  height: 55px;
+  background-color: rgb(0, 227, 113);
+  border: none;
+  outline: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  span {
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+  span:nth-child(1) {
+    display: none;
+  }
+
+  @media (max-width: 655px) {
+    width: 35px;
+    height: 35px;
+    svg {
+      width: 12px;
+      height: 12px;
+    }
+  }
+}
+
+.play_btn.active {
+  span:nth-child(1) {
+    display: block;
+  }
+  span:nth-child(2) {
+    display: none;
+  }
+}
+
+.likeIC {
+  width: 55px;
+  height: 55px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.2s;
+  @media (max-width: 655px) {
+    width: 35px;
+    height: 35px;
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+.likeIC.liked {
+  svg {
+    fill: red;
+  }
+}
+.Dowenload {
+  width: 55px;
+  height: 55px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  @media (max-width: 655px) {
+    width: 35px;
+    height: 35px;
+    svg {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+.nuqta {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 45px;
+  color: white;
+  line-height: 0;
+  margin-top: -30px;
+  @media (max-width: 655px) {
+    font-size: 30px;
+    margin-top: -20px;
+  }
+}
+
+@media (max-width: 580px) {
+  .filter {
+    display: none;
+  }
+}
+.albums {
+  width: 100%;
+  height: auto;
+  background-color: rgb(18, 18, 18);
+
+  svg {
+    width: 100%;
+  }
+  .albumCars {
+    width: 100%;
+    padding-bottom: 150px;
+    .albumCart {
+      width: 100%;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      padding-left: 60px;
+      justify-content: space-between;
+      margin-top: 10px;
+      transition: 0.2s;
+      cursor: pointer;
+      @media (max-width: 950px) {
+        padding-left: 10px;
+      }
+      img {
+        width: 60px;
+        height: 90%;
+      }
+      span {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        width: 30%;
+        p {
+          align-items: start;
+          width: 100%;
+          color: white;
+        }
+        p:nth-child(2) {
+          color: #b3b3b3;
+        }
+      }
+      .p1 {
+        width: 30%;
+        font-size: 18px;
+        color: #b3b3b3;
+      }
+      .p2 {
+        width: 30%;
+        display: flex;
+        align-items: center;
+        color: white;
+      }
+      @media (max-width: 950px) {
+        span {
+          width: 40%;
+        }
+        p,
+        .p1,
+        .p2 {
+          font-size: 14px;
+        }
+      }
+      @media (max-width: 700px) {
+        span {
+          width: 60%;
+        }
+      }
+      @media (max-width: 570px) {
+        .p1 {
+          display: none;
+        }
+      }
+      @media (max-width: 420px) {
+        .timeT {
+          display: none;
+        }
+      }
+    }
+    .albumCart:hover {
+      background-color: rgb(38, 38, 38);
+    }
+  }
+}
+
+.audio_play_contrlo_btns {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  @media (max-width: 415px) {
+    gap: 20px;
+  }
+}
+
+.playGroup {
+  background-color: red;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .playgroup_btn {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(3, 3, 3, 0.444);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: 0.2s;
+    span:nth-child(1) {
+      display: none;
+      svg {
+        width: 20px;
+        height: 20px;
+        margin-left: -6px;
+      }
+    }
+  }
+  .playgroup_btn.active {
+    span:nth-child(1) {
+      display: block;
+    }
+    span:nth-child(2) {
+      display: none;
+    }
+  }
+}
+.playGroup:hover {
+  .playgroup_btn {
+    opacity: 1;
+  }
+}
+
+.albumCardName.active:nth-child(1) {
+  color: rgb(0, 247, 124) !important;
+}
+.albumCardName {
+  transition: 0.2s;
+}

@@ -1,0 +1,71 @@
+.card {
+  width: 215px;
+  background-color: rgb(28, 28, 28);
+  margin-bottom: 20px;
+  margin-top: 20px;
+  border-radius: 8px;
+  height: 300px;
+  color: white;
+  padding-top: 10px;
+  position: relative;
+  cursor: pointer;
+  transition: 0.2s;
+  .card-image {
+    width: 90%;
+    height: 182px;
+    display: block;
+    margin: 0 auto;
+    border-radius: 6px;
+    object-fit: cover;
+  }
+  .hedding {
+    font-size: 18px;
+    padding-left: 12px;
+    padding-top: 10px;
+  }
+  p {
+    padding-left: 12px;
+    font-size: 15px;
+    padding-bottom: 20px;
+    padding-top: 10px;
+  }
+  .play_btn {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    background-color: rgb(0, 227, 113);
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    cursor: pointer;
+    right: 20px;
+    bottom: 115px;
+    opacity: 0;
+    transition: 0.2s;
+    transform: scale(0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg {
+      width: 15px;
+      height: 15px;
+    }
+  }
+  .play_btn.active {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.card:hover {
+  background-color: rgb(38, 38, 38);
+  // .play_btn {
+  //   opacity: 1;
+  //   transform: scale(1);
+  // }
+}
+
+@media (max-width: 600px) {
+  .card {
+    width: 100%;
+  }
+}
