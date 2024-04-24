@@ -18,7 +18,6 @@ const HomeComponent = () => {
     RECENT_PLAYED_playlists,
     JUMP_BACK_IN_playlists,
     UNIQUELY_YOURS_playlists,
-    Tracks_playlists,
     fetchProducts,
   } = useProductStore();
   const [activeId, setActiveId] = useState(null);
@@ -29,7 +28,6 @@ const HomeComponent = () => {
   const handleClick = (id) => {
     setActiveId(id);
     setactivePlay(!activePlay);
-    // setAudio();
   };
 
   useEffect(() => {
@@ -68,10 +66,12 @@ const HomeComponent = () => {
                     className="cart"
                     key={i}
                     onClick={() =>
-                      root(`/playlist/${el?.id}?type=FEATURED_playlists`)
+                      root(
+                        `/playlist/${el?.id}?type=${el?.tracks?.href}?playlist=${el?.href}`
+                      )
                     }
                   >
-                    <img src={el?.images?.map((el, i) => el?.url)} alt="" />
+                    <img src={el?.images?.map((el) => el?.url)} alt="" />
                     <h3>{el.name}</h3>
                     <button
                       className={`play_btn ${
@@ -94,8 +94,6 @@ const HomeComponent = () => {
                   <ProductCard
                     data={{
                       data: playlists,
-                      // Tracks_playlists,
-                      type: "playlists",
                     }}
                   />
                 )}
@@ -111,8 +109,6 @@ const HomeComponent = () => {
                   <ProductCard
                     data={{
                       data: MADE_FOR_YOU_playlists,
-                      // Tracks_playlists,
-                      type: "MADE_FOR_YOU_playlists",
                     }}
                   />
                 )}
@@ -128,8 +124,6 @@ const HomeComponent = () => {
                   <ProductCard
                     data={{
                       data: RECENT_PLAYED_playlists,
-                      // Tracks_playlists,
-                      type: "RECENT_PLAYED_playlists",
                     }}
                   />
                 )}
@@ -145,8 +139,6 @@ const HomeComponent = () => {
                   <ProductCard
                     data={{
                       data: JUMP_BACK_IN_playlists,
-                      // Tracks_playlists,
-                      type: "JUMP_BACK_IN_playlists",
                     }}
                   />
                 )}
@@ -165,8 +157,6 @@ const HomeComponent = () => {
                   <ProductCard
                     data={{
                       data: UNIQUELY_YOURS_playlists,
-                      // Tracks_playlists,
-                      type: "UNIQUELY_YOURS_playlists",
                     }}
                   />
                 )}

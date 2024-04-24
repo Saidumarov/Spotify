@@ -25,7 +25,11 @@ const ProductCard = ({ data }) => {
     <>
       {data?.data?.map((el, i) => (
         <div
-          onClick={() => root(`/playlist/${el?.id}?type=${data?.type}`)}
+          onClick={() =>
+            root(
+              `/playlist/${el?.id}?type=${el?.tracks?.href}?playlist=${el?.href}`
+            )
+          }
           key={i}
           className="card"
         >
