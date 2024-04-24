@@ -61,7 +61,7 @@ const HomeComponent = () => {
             <h3 className="h3_good">Good afternoon</h3>
             <div className="home_carts">
               {FEATURED_playlists?.length > 0 &&
-                FEATURED_playlists.slice(0, 6).map((el, i) => (
+                FEATURED_playlists.slice(4, 10).map((el, i) => (
                   <div
                     className="cart"
                     key={i}
