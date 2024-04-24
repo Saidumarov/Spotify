@@ -48,13 +48,6 @@ const PlaylistComponent = () => {
       }
     };
     fetchData();
-    if (pay) {
-      setAudio(true);
-      localStorage.setItem("audioPlay", JSON.stringify("paused"));
-    } else {
-      setAudio(false);
-      localStorage.setItem("audioPlay", JSON.stringify("play"));
-    }
   }, [id, urlApi, endaudio]);
 
   const like = (playList) => {
