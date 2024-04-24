@@ -83,7 +83,12 @@ const LikeComponent = () => {
                   <div className="albumCart" key={i}>
                     <span style={{ color: "#B3B3B3" }}>
                       {i + 1}
-                      <img src={el?.images[0].url} alt="" />
+                      {el?.images ? (
+                        <img src={el?.images[0]?.url} alt="" />
+                      ) : (
+                        <img src={el?.album?.images[0].url} alt="" />
+                      )}
+
                       <p>
                         <p key={i}>{el?.name}</p>
                       </p>

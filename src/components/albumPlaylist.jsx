@@ -18,14 +18,13 @@ import { Audioprovider } from "../context";
 import useLikeStore from "../store/like";
 import { getPlaylists, getToken } from "../hooks";
 
-const PlaylistComponent = () => {
+const AlbumPlaylist = () => {
   const { id } = useParams();
   const url = window.location.href;
   const urlApi = url?.split("?type=")[1];
   const playlistUrl = url.toString().split("?playlist=")[1];
   const [data, setData] = useState(null);
   const [playList, setplayList] = useState();
-  const [artists, setArtists] = useState("");
   const root = useNavigate();
   const { audio, setAudio, endaudio, setendAudio } = useContext(Audioprovider);
   const [likeData, setlikeData] = useState([]);
@@ -39,10 +38,14 @@ const PlaylistComponent = () => {
       try {
         await getToken();
         await getPlaylists(playlistUrl).then((res) => {
-          setData(res);
           setplayList(res);
-          setArtists(res?.tracks?.items);
+          //   console.log(res);
         });
+        await getPlaylists(urlApi.toString().split("?playlist=")[0]).then(
+          (res) => {
+            setData(res);
+          }
+        );
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -72,29 +75,9 @@ const PlaylistComponent = () => {
     setlikeData(like);
   }, []);
 
-  // console.log(pay);
-
-  const handelAudioPlay = (url, type) => {
+  const handelAudioPlay = (url) => {
     setaudioPlayID(url);
-    const urlObj = {
-      ...url,
-      track: {
-        ...url.track,
-        album: {
-          ...url.track.album,
-          images: [
-            {
-              url: playList?.images?.map((img) => img?.url),
-            },
-          ],
-        },
-      },
-    };
-    if (type === "album") {
-      localStorage.setItem("audioUrl", JSON.stringify(urlObj));
-    } else if (type === "albums") {
-      localStorage.setItem("audioUrl", JSON.stringify(url));
-    }
+    localStorage.setItem("audioUrl", JSON.stringify(url));
     setAudio(url);
     setPay(!pay);
     if (pay) {
@@ -105,8 +88,6 @@ const PlaylistComponent = () => {
       localStorage.setItem("audioPlay", JSON.stringify("play"));
     }
   };
-
-  // console.log(data?.tracks);
 
   return (
     <>
@@ -140,7 +121,7 @@ const PlaylistComponent = () => {
             <div className="playlist_carts">
               <div className="play_left">
                 {data !== null ? (
-                  <img src={playList?.images?.map((img) => img?.url)} alt="" />
+                  <img src={playList?.album?.images[0].url} alt="" />
                 ) : (
                   ""
                 )}
@@ -148,12 +129,12 @@ const PlaylistComponent = () => {
               <div className="play_right">
                 {data !== null ? <p>PUBLIC PLAYLIST</p> : ""}
 
-                <h2> {playList?.name} </h2>
-                <p className="p">{artists[15]?.track?.name}</p>
+                <h2> {playList?.name?.substring(0, 15)} </h2>
+                <p className="p">{playList?.name?.substring(0, 15)}</p>
                 <p className="p">
-                  {artists[15]?.track?.album.name}{" "}
-                  {artists[15]?.track?.album.release_date}{" "}
-                  {artists[15]?.track?.album.release_date_precision}{" "}
+                  {playList?.album.name}
+                  {playList?.album.release_date}{" "}
+                  {playList?.album.release_date_precision}{" "}
                 </p>
               </div>
             </div>
@@ -161,11 +142,11 @@ const PlaylistComponent = () => {
               <div className="buttons">
                 <button
                   className={`play_btn ${
-                    pay && artists[15]?.track?.id == audioPlayID?.track?.id
+                    pay && playList?.id == audioPlayID?.track?.id
                       ? "active"
                       : ""
                   }`}
-                  onClick={() => handelAudioPlay(artists[15], "album")}
+                  onClick={() => handelAudioPlay({ track: playList })}
                 >
                   <span>
                     <Pausebtn />
@@ -210,7 +191,7 @@ const PlaylistComponent = () => {
             <div className="albums">
               <HeaderIC />
               <div className="albumCars">
-                {data?.tracks?.items.slice(2)?.map((el, i) => (
+                {data?.items.slice(2)?.map((el, i) => (
                   <div
                     className="albumCart"
                     key={i}
@@ -238,7 +219,7 @@ const PlaylistComponent = () => {
                               : ""
                           }`}
                           onClick={(e) => (
-                            handelAudioPlay(el, "albums"), e.stopPropagation()
+                            handelAudioPlay(el), e.stopPropagation()
                           )}
                         >
                           <span>
@@ -294,4 +275,4 @@ const PlaylistComponent = () => {
   );
 };
 
-export default PlaylistComponent;
+export default AlbumPlaylist;

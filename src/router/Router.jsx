@@ -7,6 +7,7 @@ import SiteBarLeft from "../components/sitebar_left";
 import SiteBarRight from "../components/sitebar_right";
 import "./index.scss";
 import AudioPlay from "../components/audioplay";
+import AlbumPlaylist from "../components/albumPlaylist";
 
 const Router = () => {
   return (
@@ -17,6 +18,7 @@ const Router = () => {
           <Route path="/" element={<Home />} />
           <Route path="/likes" element={<Like />} />
           <Route path="/playlist/:id" element={<Playlist />} />
+          <Route path="/album/playlist/:id" element={<AlbumPlaylist />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <SiteBarRight />
